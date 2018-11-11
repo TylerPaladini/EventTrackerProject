@@ -30,21 +30,47 @@ public class FishingDaysServiceImpl implements FishingDaysService {
 	}
 
 	@Override
+	public FishingDays replaceADay(FishingDays fishingdays, Integer id) {
+		Optional<FishingDays> opt = fishRepo.findById(id);
+		FishingDays replacedDay = opt.get();
+		
+		if(replacedDay != null) {
+			replacedDay.setLocation(fishingdays.getLocation());
+			replacedDay.setFishingStyle(fishingdays.getFishingStyle());
+			replacedDay.setFishingMode(fishingdays.getFishingMode());
+			replacedDay.setAmountCaught(fishingdays.getAmountCaught());
+			
+			replacedDay = fishRepo.saveAndFlush(replacedDay);
+		}
+		
+		return replacedDay;
+	}		
+	
+	
+	
+	@Override
 	public FishingDays updateADay(FishingDays fishingdays, Integer id) {
 		Optional<FishingDays> opt = fishRepo.findById(id);
 		FishingDays updatedDay = opt.get();
 		
-		if(updatedDay != null) {
+		if(fishingdays.getLocation() != null) {
 			updatedDay.setLocation(fishingdays.getLocation());
+		}
+		if(fishingdays.getFishingStyle() != null) {
 			updatedDay.setFishingStyle(fishingdays.getFishingStyle());
+		}
+		if(fishingdays.getFishingMode() != null) {
 			updatedDay.setFishingMode(fishingdays.getFishingMode());
+		}
+		if(fishingdays.getAmountCaught() != 0) {
 			updatedDay.setAmountCaught(fishingdays.getAmountCaught());
 			
 			updatedDay = fishRepo.saveAndFlush(updatedDay);
 		}
 		
+		
 		return updatedDay;
-	}		
+	}
 		
 
 	@Override
@@ -55,5 +81,6 @@ public class FishingDaysServiceImpl implements FishingDaysService {
 		}
 		return false;
 	}
+
 
 }

@@ -38,11 +38,18 @@ public class FishingDaysController {
 	}
 	
 	@RequestMapping(path="fishingdays/{id}", method=RequestMethod.PUT)
+	public FishingDays replaceADay(@RequestBody FishingDays fishingdays, @PathVariable ("id") Integer id) {
+		
+		FishingDays replacedDay = fishServ.replaceADay(fishingdays, id);
+		
+		return replacedDay;
+		
+	}
+	@RequestMapping(path="fishingdays/{id}", method=RequestMethod.PATCH)
 	public FishingDays updateADay(@RequestBody FishingDays fishingdays, @PathVariable ("id") Integer id) {
+		FishingDays updateDay = fishServ.updateADay(fishingdays, id);
 		
-		FishingDays updatedDay = fishServ.updateADay(fishingdays, id);
-		
-		return updatedDay;
+		return updateDay;
 		
 	}
 

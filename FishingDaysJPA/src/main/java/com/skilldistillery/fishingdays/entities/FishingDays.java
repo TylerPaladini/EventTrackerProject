@@ -30,7 +30,7 @@ public class FishingDays {
 	private String fishingMode;
 	
 	@Column(name="amount_caught")
-	private int amountCaught;
+	private Integer amountCaught;
 	
 	@Temporal(TemporalType.DATE)
 	@CreationTimestamp

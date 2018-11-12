@@ -5,6 +5,15 @@
 ### Overview
 This program was created with full C.R.U.D. functionality using JPA and REST API. It was designed with the idea of being able to track fishing days for a user. The program currently has the ability to track multiple metrics that are experienced during a fishing trip to give the user relevant information on past trips. Having this information stored in a database will allow the user to research past trips and plan accordingly.
 
+
+### Routes
+
+Index Route = "api/fishingdays"
+Create Route = "api/fishingdays"
+Put Route = "api/fishingdays/{id}"
+Patch Route = "api/fishingdays/{id}"
+Delete Route = "api/fishingdays/{id}s
+
 #### Technologies/ Techniques Used
 | Technologies          |
 | ----------------------|

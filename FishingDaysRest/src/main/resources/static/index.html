@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Fishing Tracker</title>
+<script type="text/javascript" src="js/fishingFunctions.js"></script>
+</head>
+<body>
+<h1>Welcome To The Fishing Tracker</h1>
+
+<form name="fishingForm">
+<input type="number" name="fishingId"><br>
+<button name="lookup">Get Fishing Day By ID</button>
+</form><br>
+
+<div id="output">
+	<div id="fishingData"></div>
+	
+</div>
+
+ <form name="createForm">
+  <input type="text" name="location" value="" placeholder="Location"><br>
+  <input type="text" name="fishingStyle" value="" placeholder="Fishing Style"><br>
+  <input type="text" name="fishingMode" value="" placeholder="Fishing Mode"><br>
+  <input type="number" name="amountCaught" value="" placeholder="Amount of Fish Caught"><br>
+  <button name="create"> Create Fishing Day</button>
+  </form>
+
+</body>
+</html>

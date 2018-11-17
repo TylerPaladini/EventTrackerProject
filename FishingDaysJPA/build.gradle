@@ -33,7 +33,7 @@ repositories {
 */
 ext {
   hibernateVersion = "5.2.17.Final"
-  springVersion = "4.3.14.RELEASE" /*added*/
+ 
 }
 // Get plugin for Gradle to run JUnit5
 buildscript {
@@ -47,12 +47,12 @@ buildscript {
 
 // define project specific dependencies
 dependencies {
-compile group: 'org.springframework', name: 'spring-context', version:"$springVersion"
+
   compile "mysql:mysql-connector-java:5.1.47"
   compile "log4j:log4j:1.2.17"
   compile "org.hibernate:hibernate-core:$hibernateVersion"
   compile "org.hibernate:hibernate-c3p0:$hibernateVersion"
-  compile group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: '2.9.6'
+  compile group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: '2.9.7'
   
   
   compile 'org.junit.jupiter:junit-jupiter-api:5.0.1'

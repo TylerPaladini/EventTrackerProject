@@ -11,6 +11,7 @@ public interface FishingDaysService {
 	FishingDays replaceADay(FishingDays fishingdays, Integer id);
 	FishingDays updateADay(FishingDays fishingdays, Integer id);
 	Boolean deleteADay(Integer id);
+	FishingDays findById(Integer id);
 	
 
 }

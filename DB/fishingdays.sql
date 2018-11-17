@@ -27,10 +27,31 @@ CREATE TABLE IF NOT EXISTS `fishinginformation` (
   `fishing_mode` VARCHAR(200) NULL DEFAULT NULL,
   `amount_caught` VARCHAR(45) NULL DEFAULT NULL,
   `date` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `species_id` INT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
 AUTO_INCREMENT = 6
 DEFAULT CHARACTER SET = utf8;
+
+
+-- -----------------------------------------------------
+-- Table `species`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `species` ;
+
+CREATE TABLE IF NOT EXISTS `species` (
+  `id` INT NOT NULL,
+  `name` VARCHAR(45) NOT NULL,
+  `amount_caught` INT NULL,
+  `fishinginformation_id` INT NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_species_fishinginformation_idx` (`fishinginformation_id` ASC),
+  CONSTRAINT `fk_species_fishinginformation`
+    FOREIGN KEY (`fishinginformation_id`)
+    REFERENCES `fishinginformation` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
 
 SET SQL_MODE = '';
 DROP USER IF EXISTS user@localhost;
@@ -48,10 +69,20 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `fishingdaysdb`;
-INSERT INTO `fishinginformation` (`id`, `location`, `fishing_style`, `fishing_mode`, `amount_caught`, `date`) VALUES (1, 'Colorado River - Two Bridges', 'Fly Fishing', 'Float', '8', DEFAULT);
-INSERT INTO `fishinginformation` (`id`, `location`, `fishing_style`, `fishing_mode`, `amount_caught`, `date`) VALUES (2, 'Colorado River - State Bridge', 'Fly Fishing', 'Float', '9', DEFAULT);
-INSERT INTO `fishinginformation` (`id`, `location`, `fishing_style`, `fishing_mode`, `amount_caught`, `date`) VALUES (3, 'Roaring Fork River - Basalt', 'Fly Fishing', 'Float', '3', DEFAULT);
-INSERT INTO `fishinginformation` (`id`, `location`, `fishing_style`, `fishing_mode`, `amount_caught`, `date`) VALUES (4, 'South Platte River - Cheeseman Canyon', 'Fly Fishing', 'Walk/Wade', '9', DEFAULT);
+INSERT INTO `fishinginformation` (`id`, `location`, `fishing_style`, `fishing_mode`, `amount_caught`, `date`, `species_id`) VALUES (1, 'Colorado River - Two Bridges', 'Fly Fishing', 'Float', '8', DEFAULT, NULL);
+INSERT INTO `fishinginformation` (`id`, `location`, `fishing_style`, `fishing_mode`, `amount_caught`, `date`, `species_id`) VALUES (2, 'Colorado River - State Bridge', 'Fly Fishing', 'Float', '9', DEFAULT, NULL);
+INSERT INTO `fishinginformation` (`id`, `location`, `fishing_style`, `fishing_mode`, `amount_caught`, `date`, `species_id`) VALUES (3, 'Roaring Fork River - Basalt', 'Fly Fishing', 'Float', '3', DEFAULT, NULL);
+INSERT INTO `fishinginformation` (`id`, `location`, `fishing_style`, `fishing_mode`, `amount_caught`, `date`, `species_id`) VALUES (4, 'South Platte River - Cheeseman Canyon', 'Fly Fishing', 'Walk/Wade', '9', DEFAULT, NULL);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `species`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `fishingdaysdb`;
+INSERT INTO `species` (`id`, `name`, `amount_caught`, `fishinginformation_id`) VALUES (1, 'Rainbow Trout', 7, 1);
 
 COMMIT;
 

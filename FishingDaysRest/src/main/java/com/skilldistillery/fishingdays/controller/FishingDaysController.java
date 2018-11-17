@@ -68,5 +68,15 @@ public class FishingDaysController {
 		}
 
 	}
+	
+	@RequestMapping(path="fishingdays/{id}", method=RequestMethod.GET)
+	public FishingDays findById(@PathVariable ("id") Integer id, HttpServletResponse resp) {
+		FishingDays dayById = fishServ.findById(id);
+		if(dayById == null) {
+			resp.setStatus(404);
+		}
+		return dayById;
+		
+	}
 
 }

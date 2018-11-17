@@ -82,5 +82,13 @@ public class FishingDaysServiceImpl implements FishingDaysService {
 		return false;
 	}
 
+	@Override
+	public FishingDays findById(Integer id) {
+		Optional<FishingDays> opt = fishRepo.findById(id);
+		FishingDays dayById = opt.get();
+		
+		return dayById;
+	}
+
 
 }

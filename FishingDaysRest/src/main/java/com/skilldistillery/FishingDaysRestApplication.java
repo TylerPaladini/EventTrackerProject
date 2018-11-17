@@ -7,10 +7,11 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 
 @SpringBootApplication
 public class FishingDaysRestApplication extends SpringBootServletInitializer {
-	  @Override
-	  protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-	    return application.sources(FishingDaysRestApplication.class);
-	  }
+	@Override
+	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+		return application.sources(FishingDaysRestApplication.class);
+	}
+
 
 	public static void main(String[] args) {
 		SpringApplication.run(FishingDaysRestApplication.class, args);

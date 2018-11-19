@@ -4,9 +4,8 @@ window.addEventListener('load', function(e) {
 });
 
 function init() {
-
+	// finds fish day by id
 	document.fishingForm.lookup.addEventListener('click', function(event) {
-
 		event.preventDefault();
 		var fishingId = document.fishingForm.fishingId.value;
 		if (!isNaN(fishingId) && fishingId > 0) {
@@ -35,6 +34,19 @@ function init() {
 		evt.preventDefault();
 		console.log("inside init function");
 		getAllDays();
+
+	});
+
+	// deletes a fishing day
+	document.deleteForm.delete.addEventListener('click', function(ev){
+		console.log("in delete fishing");
+		ev.preventDefault();
+		var fishingId = document.deleteForm.deleteFishingId.value;
+		console.log("id to be deleted " + fishingId);
+		if(!isNaN(fishingId) && fishingId > 0){
+			deleteFish(fishingId);
+			console.log("id made it through if statements");
+		}
 
 	});
 
@@ -90,6 +102,26 @@ function getFish(fishingId) {
 	xhr.send();
 
 }
+// deletes fish by id
+function deleteFish(fishingId){
+	console.log("ID made it to deleteFish function " + fishingId);
+	const xhr = new XMLHttpRequest();
+	xhr.open('DELETE', 'api/fishingdays/' + fishingId);
+
+	xhr.onreadystatechange = function(){
+		if(xhr.readyState === 4){
+
+			if(xhr.status === 204) {
+
+				displayFishingDay(fishingId);
+				console.log("Fish has been deleted " + fishingId);
+			}
+		}
+	}
+}
+
+
+
 // find by id and creating table
 function displayFishingDay(fish) {
 	var dataDiv = document.getElementById('fishingData');
@@ -167,7 +199,7 @@ function displayFishingDay(fish) {
 			createdTableBodyPrint.appendChild(createFishingStyle);
 
 		let createFishingMode = document.createElement('td');
-			createFishingStyle.textContent = fish.fishingMode;
+			createFishingMode.textContent = fish.fishingMode;
 			createdTableBodyPrint.appendChild(createFishingMode);
 
 		let createAmountCaught = document.createElement('td');

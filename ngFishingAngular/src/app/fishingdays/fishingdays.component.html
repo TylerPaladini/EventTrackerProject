@@ -1,0 +1,68 @@
+
+<body>
+
+
+<h1 id="title">{{ title }}</h1>
+
+<!-- create button -->
+<form class="create" *ngIf="!selected">
+
+    <input type="text" name="location" placeholder="Fishing Location" [(ngModel)]="newFishingday.location" />
+    <input type="text" name="fishingStyle" placeholder="Fishing Style" [(ngModel)]="newFishingday.fishingStyle"/>
+    <input type="text" name="fishingMode" placeholder="Fishing Mode" [(ngModel)]="newFishingday.fishingMode" />
+    <input type="number" name="amountCaught" placeholder="Amount Caught" [(ngModel)]="newFishingday.amountCaught" />
+
+      <button class="addButton" (click)="newFishingDay()">Add Fishing Day</button>
+  </form><br>
+
+
+<div>
+
+  <table *ngIf="!selected">
+
+    <tr>
+      <th>Day</th>
+      <th>Location</th>
+      <th>Fishing Style</th>
+      <th>Fishing Mode</th>
+      <th>Amount Caught</th>
+    </tr>
+    <tr *ngFor="let day of fishingday">
+      <td (click)="displayFishingday(day)">{{ day.id }}</td>
+      <td (click)="displayFishingday(day)">{{ day.location }}</td>
+      <td (click)="displayFishingday(day)">{{ day.fishingStyle }}</td>
+      <td (click)="displayFishingday(day)">{{ day.fishingMode }}</td>
+      <td (click)="displayFishingday(day)">{{ day.amountCaught }}</td>
+      <td class="deleteButton"> <button class="deleteButton2" (click)="delete(day.id)">DELETE</button></td>
+    </tr>
+  </table>
+</div> <br>
+
+
+
+<!-- details view -->
+<div id="detailView" selected='selected' *ngIf='selected && !updateDay'>
+  <table id="detailTable">
+    <p>ID: {{selected.id}}</p>
+    <p>Location: {{selected.location}}</p>
+    <p>Fishing Style: {{selected.fishingStyle}}</p>
+    <p>Fishing Mode: {{selected.fishingMode}}</p>
+    <p>Amount Caught: {{selected.amountCaught}}</p>
+  </table>
+    <button (click)="setEditFishingday()">Edit</button>
+    <button (click)="displayTable()">Show Table</button>
+</div>
+
+<div id="editDiv">
+    <form *ngIf="updateDay">
+      Location: <input type="text" name="location" placeholder="Location" [(ngModel)]="updateDay.location" /> <br>
+      Fishing Style: <input type="text" name="fishingStyle"  placeholder="Fishing Style" [(ngModel)]="updateDay.fishingStyle" /> <br>
+      Fishing Mode:<input type="text" name="fishingMode" [(ngModel)]="updateDay.fishingMode" /> <br>
+      Amount Caught:<input type="number" name="amountCaught" [(ngModel)]="updateDay.amountCaught" /> <br>
+      <button (click)="updateFishingday(updateDay)">Save</button>
+      <button (click)="cancel()">Cancel</button>
+    </form>
+  </div>
+
+
+</body>

@@ -1,12 +1,14 @@
 package com.skilldistillery.fishingdays.entities;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -36,6 +38,14 @@ public class FishingDays {
 	@CreationTimestamp
 	private Date date;
 
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	public String getLocation() {
 		return location;
 	}
@@ -60,11 +70,11 @@ public class FishingDays {
 		this.fishingMode = fishingMode;
 	}
 
-	public int getAmountCaught() {
+	public Integer getAmountCaught() {
 		return amountCaught;
 	}
 
-	public void setAmountCaught(int amountCaught) {
+	public void setAmountCaught(Integer amountCaught) {
 		this.amountCaught = amountCaught;
 	}
 
@@ -76,15 +86,11 @@ public class FishingDays {
 		this.date = date;
 	}
 
-	public int getId() {
-		return id;
-	}
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + amountCaught;
+		result = prime * result + ((amountCaught == null) ? 0 : amountCaught.hashCode());
 		result = prime * result + ((date == null) ? 0 : date.hashCode());
 		result = prime * result + ((fishingMode == null) ? 0 : fishingMode.hashCode());
 		result = prime * result + ((fishingStyle == null) ? 0 : fishingStyle.hashCode());
@@ -102,7 +108,10 @@ public class FishingDays {
 		if (getClass() != obj.getClass())
 			return false;
 		FishingDays other = (FishingDays) obj;
-		if (amountCaught != other.amountCaught)
+		if (amountCaught == null) {
+			if (other.amountCaught != null)
+				return false;
+		} else if (!amountCaught.equals(other.amountCaught))
 			return false;
 		if (date == null) {
 			if (other.date != null)
@@ -148,7 +157,8 @@ public class FishingDays {
 		return builder.toString();
 	}
 
-	public FishingDays(int id, String location, String fishingStyle, String fishingMode, int amountCaught, Date date) {
+	public FishingDays(int id, String location, String fishingStyle, String fishingMode, Integer amountCaught,
+			Date date) {
 		super();
 		this.id = id;
 		this.location = location;
@@ -162,5 +172,6 @@ public class FishingDays {
 		
 	}
 	
-
 }
+	
+	

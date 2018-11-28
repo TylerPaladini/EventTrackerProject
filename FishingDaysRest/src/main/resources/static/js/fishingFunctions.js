@@ -128,7 +128,7 @@ function displayFishingDay(fish) {
 		dataDiv.textContent = "";
 
 	let createTable = document.createElement('table');
-		dataDiv.appendChild(createTable);
+		// dataDiv.appendChild(createTable);
 
 	let thead = document.createElement('thead');
 		dataDiv.appendChild(thead);
@@ -159,6 +159,8 @@ function displayFishingDay(fish) {
 	let tableHeadData6 = document.createElement('th');
 		tableHeadData6.textContent = "DATE";
 		tableHeadRow.appendChild(tableHeadData6);
+
+		createTable.appendChild(tableHeadRow);
 
 	let createdTableBody = document.createElement('tbody');
 		createdTableBody.setAttribute('id', 'tableBody');
@@ -205,6 +207,8 @@ function displayFishingDay(fish) {
 		let createAmountCaught = document.createElement('td');
 			createAmountCaught.textContent = fish.amountCaught;
 			createdTableBodyPrint.appendChild(createAmountCaught);
+
+
 
 		let createDate = document.createElement('td');
 		createDate.textContent = fish.date;

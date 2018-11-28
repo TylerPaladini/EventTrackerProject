@@ -1,0 +1,12 @@
+<h1>Add Your Fishing Day</h1>
+
+
+<!-- create button -->
+<form *ngIf="!selected">
+    <label></label>
+    <input type="text" name="location" placeholder="Fishing Location" [(ngModel)]="newFishingday.location" />
+    <input type="text" name="fishingStyle" placeholder="Fishing Style" [(ngModel)]="newFishingday.fishingStyle"/>
+    <input type="text" name="fishingMode" placeholder="Fishing Mode" [(ngModel)]="newFishingday.fishingMode" />
+    <input type="number" name="amountCaught" placeholder="Amount Caught" [(ngModel)]="newFishingday.amountCaught" />
+      <button (click)="newFishingDay()">Add Fishing Day</button>
+  </form><br>

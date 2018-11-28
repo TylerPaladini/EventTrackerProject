@@ -62,7 +62,7 @@ public class FishingDaysServiceImpl implements FishingDaysService {
 		if(fishingdays.getFishingMode() != null) {
 			updatedDay.setFishingMode(fishingdays.getFishingMode());
 		}
-		if(fishingdays.getAmountCaught() != 0) {
+		if(fishingdays.getAmountCaught() != null) {
 			updatedDay.setAmountCaught(fishingdays.getAmountCaught());
 			
 			updatedDay = fishRepo.saveAndFlush(updatedDay);

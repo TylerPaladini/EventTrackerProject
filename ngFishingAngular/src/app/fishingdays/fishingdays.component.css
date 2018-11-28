@@ -18,7 +18,7 @@ td {
 }
 
 h1 {
-  color: green;
+  color: rgb(3, 85, 3);
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   text-align: center;
 }
@@ -41,7 +41,13 @@ margin-left: 72px;
   background-color: crimson;
 }
 
+body {
+  background-image: url(https://www.wildlife.ca.gov/Portals/0/Images/Fishing/Inland/BrownTrout/Brown_trout_Bloomv2.jpg);
+  background-repeat: round;
+  background-position: relative;
 
+  opacity: 0.8;
+}
 
 
 
